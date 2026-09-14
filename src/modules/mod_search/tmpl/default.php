@@ -15,7 +15,8 @@ use Joomla\CMS\Router\Route;
 <div class="mod-search search">
 	<form action="<?php echo Route::_('index.php'); ?>" method="post" role="search">
 		<?php
-			$input  = '<input name="searchword" id="mod-search-searchword' . $module->id . '" class="form-control" type="search" placeholder="' . $text . '">';
+			$labelOutput = '<label for="mod-search-searchword' . $module->id . '" class="sr-only">' . $label . '</label>';
+			$input = '<input name="searchword" id="mod-search-searchword' . $module->id . '" class="form-control" type="search" placeholder="' . $text . '">';
 			$output = '';
 
 			if ($button) :
@@ -25,6 +26,7 @@ use Joomla\CMS\Router\Route;
 					$btn_output = '<button class="btn btn-primary" onclick="this.form.searchword.focus();">' . $button_text . '</button>';
 				endif;
 
+				$output .= $labelOutput;
 				$output .= '<div class="input-group">';
 				$output .= $input;
 				$output .= '<span class="input-group-append">';
@@ -32,6 +34,7 @@ use Joomla\CMS\Router\Route;
 				$output .= '</span>';
 				$output .= '</div>';
 			else :
+				$output .= $labelOutput;
 				$output .= $input;
 			endif;
 
